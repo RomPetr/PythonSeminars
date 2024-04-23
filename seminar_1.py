@@ -167,17 +167,33 @@ if first == second:
     print("yes")
 else:
     print("no")
-
+"""
 #------------------------------------------------
 # Home_Work_4
-Определите, можно ли от шоколадки размером a × b долек отломить c долек, если разрешается сделать один разлом по прямой
-между дольками (то есть разломить шоколадку на два прямоугольника).
-Выведите yes или no соответственно.
-Пример:
-a, b, c = 3, 2, 4 -> yes
-a, b, c = 3, 2, 1 -> no
+#Определите, можно ли от шоколадки размером a × b долек отломить c долек, если разрешается сделать один разлом по прямой
+#между дольками (то есть разломить шоколадку на два прямоугольника).
+#Выведите yes или no соответственно.
+#Пример:
+#a, b, c = 3, 2, 4 -> yes
+#a, b, c = 3, 2, 1 -> no
+
+a, b, c = 3, 2, 1
+
+if int(c % a) == 0:
+    if int(b >= c / a):
+        print('yes')
+    else:
+        print('no')
+elif int(c % b) == 0:
+    if a >= int(c / b):
+        print('yes')
+    else:
+        print('no')
+else:
+    print('no')
+
 """
-a, b, c = 3, 2, 4
+# моё решение
 flag = False
 
 for num in range(a - 1):
@@ -193,5 +209,52 @@ for num in range(b - 1):
         flag = True
 if flag == False:
     print('no')
+    
+"""
+"""
+# Lection_1
 
+# print('Введите первое число: ')
+# a = int(input())
+# b = int(input('Введите второе число: '))
+# print(a, '+', b, '=', a + b)
 
+# a = 5.89956
+# b = 6.556551
+# print(a * b)
+# print(round(a*b, 3))
+
+# a = 1 < 4 and 5 > 2
+# print(a)
+# a = 1 == 2
+# print(a)
+# a = 1 != 2
+# print(a)
+# a = 1 < 3 < 5 < 10
+# print(a)
+
+# r = range(100, 0, -20)
+# for i in r:
+#     print(i)
+# a ='qwerty'
+# for i in a:
+#     print(i)
+
+# line = ""
+# for i in range(5):
+#     line = ""
+#     for j in range(5):
+#         line += "*"
+#     print(line)
+
+text = 'СъЕШЬ ещё этих МяГкИх французских булок'
+print(len(text))
+print('ещё' in text)
+print(text.lower())
+print(text.upper())
+print(text.replace('eщё', 'ЕЩЁ'))
+print(text[:])
+print(text[-1])
+print(text[2:9])
+print(text[0:len(text):6])
+"""
