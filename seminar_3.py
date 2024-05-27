@@ -101,14 +101,95 @@ HW_2
 list_1 = [1, 2, 3, 4, 5]
 k = 6
 # 5
-"""
-list_1 = [1, 2, 3, 4, 5]
-k = 6
 
-for i in range(len(list_1)):
-    if list_1[i] == k:
-        print(list_1[i])
-    elif (list_1[i] < k AND list_1[i] <= list_1[i+1]):
-        del list_1[i]
-print(list_1)
+list_1 = [1, 12, 6, 7, 8, 15]
+k = 11
+
+cl_val = list_1[0]
+min_dist = abs(cl_val - k)
+
+for el in list_1:
+    dist = abs(el-k)
+    if dist < min_dist:
+        cl_val = el
+        min_dist = dist
+print(cl_val)
+#--------------------------------------
+HW_3
+В настольной игре Скрабл (Scrabble) каждая буква имеет определенную ценность.
+В случае с английским алфавитом очки распределяются так:
+    A, E, I, O, U, L, N, S, T, R – 1 очко;
+    D, G – 2 очка;
+    B, C, M, P – 3 очка;
+    F, H, V, W, Y – 4 очка;
+    K – 5 очков;
+    J, X – 8 очков;
+    Q, Z – 10 очков.
+
+А русские буквы оцениваются так:
+    А, В, Е, И, Н, О, Р, С, Т – 1 очко;
+    Д, К, Л, М, П, У – 2 очка;
+    Б, Г, Ё, Ь, Я – 3 очка;
+    Й, Ы – 4 очка;
+    Ж, З, Х, Ц, Ч – 5 очков;
+    Ш, Э, Ю – 8 очков;
+    Ф, Щ, Ъ – 10 очков.
+
+Напишите программу, которая вычисляет стоимость введенного пользователем слова k и выводит его.
+Будем считать, что на вход подается только одно слово, которое содержит либо только английские,
+либо только русские буквы.
+Пример:
+
+k = 'ноутбук'
+# 12
+
+"""
+
+def scrabble_score(word):
+    # Определение значений очков для английских и русских букв
+    english_scores = {
+        1: "AEIOULNRST",
+        2: "DG",
+        3: "BCMP",
+        4: "FHVWY",
+        5: "K",
+        8: "JX",
+        10: "QZ"
+    }
+
+    russian_scores = {
+        1: "АВЕИНОРСТ",
+        2: "ДКЛМПУ",
+        3: "БГЁЬЯ",
+        4: "ЙЫ",
+        5: "ЖЗХЦЧ",
+        8: "ШЭЮ",
+        10: "ФЩЪ"
+    }
+
+    # Создание словарей для быстрого поиска стоимости букв
+    letter_to_score = {}
+
+    # Заполнение словаря для английских букв
+    for score, letters in english_scores.items():
+        for letter in letters:
+            letter_to_score[letter] = score
+
+    # Заполнение словаря для русских букв
+    for score, letters in russian_scores.items():
+        for letter in letters:
+            letter_to_score[letter] = score
+
+    # Приведение слова к верхнему регистру для сопоставления с ключами словаря
+    word = word.upper()
+
+    # Подсчет стоимости слова
+    total_score = sum(letter_to_score[letter] for letter in word)
+
+    return total_score
+
+
+# Пример использования
+k = 'ноутбуки'
+print(scrabble_score(k))  # 12
 
