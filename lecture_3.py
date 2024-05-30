@@ -1,3 +1,4 @@
+"""
 # Fibonacci
 def fib(n):
     if n in [1, 2]:
@@ -10,7 +11,7 @@ for i in range(1, 30):
 print(list_1)
 
 # Quick sort
-"""
+
 def quick_sort(array):
     if len(array) <= 1:
         return array
@@ -55,3 +56,7 @@ merge_sort(list_1)
 print(list_1)
 
 """
+my_l = [4, 234, 45.8, "text", "word", "el", True, None]
+print(my_l.__sizeof__())
+my_t = (4, 234, 45.8, "text", "word", "el", True, None)
+print(my_t.__sizeof__())
