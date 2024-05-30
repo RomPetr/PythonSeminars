@@ -1,4 +1,16 @@
+# Fibonacci
+def fib(n):
+    if n in [1, 2]:
+        return 1
+    return fib(n-1) + fib(n-2)
+
+list_1 = []
+for i in range(1, 30):
+    list_1.append(fib(i))
+print(list_1)
+
 # Quick sort
+"""
 def quick_sort(array):
     if len(array) <= 1:
         return array
@@ -41,3 +53,5 @@ def merge_sort(nums):
 list_1 = [1,5,6,9,8,7,2,1,55,2,4]
 merge_sort(list_1)
 print(list_1)
+
+"""
