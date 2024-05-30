@@ -31,22 +31,104 @@ that she sells are sea shells I'm sure.So if she sells sea
 shells on the sea shore I'm sure that the shells are sea
 shore shells
 Output: 13
-"""
+
 # Короткое решение
-data = """She sells sea shells on the sea shore The shells
+data = "She sells sea shells on the sea shore The shells
 that she sells are sea shells I'm sure.So if she sells sea
 shells on the sea shore I'm sure that the shells are sea
-shore shells""".lower().split()
+shore shells".lower().split()
 print(len(list(set(data))))
 
-# Решение через цикл
-input_str = """She sells sea shells on the sea shore The shells
-            that she sells are sea shells I'm sure.So if she sells sea
-            shells on the sea shore I'm sure that the shells are sea shore shells""".split()
-temp = set()
-count = 0
-for item in input_str:
-    count += 1
-    temp = set(item.lower())
-print(len(temp))
-print(count)
+#--------------------------------------
+#HW 1
+Даны два неупорядоченных набора целых чисел (может быть, с повторениями). Выдать без повторений в 
+порядке возрастания все те числа, которые встречаются в обоих наборах.
+На вход подается 2 числа через пробел: n m
+n - кол-во элементов первого множества.
+m - кол-во элементов второго множества.
+Затем подаются элементы каждого множества через пробел в виде строки. ! Писать input() не надо
+
+Пример:
+
+На входе:
+var1 = '5 4' # количество элементов первого и второго множества
+var2 = '1 3 5 7 9' # элементы первого множества через пробел
+var3 = '2 3 4 5' # элементы второго множества через пробел
+
+На выходе:
+3 5
+
+var1 = '5 4'
+var2 = '1 3 5 7 9'
+var3 = '2 3 4 5'
+t3 = [0, ]
+j = 0
+# temp1 = sorted(var2.split())
+# temp2 = sorted(var3.split())
+# print(temp1)
+# print(temp2)
+t1 = var2.split()
+t2 = var3.split()
+# var1 = var1.split()
+# if var1[0] > var1[1]:
+#     idx = int(var1[1])
+# else:
+#     idx = int(var1[0])
+# for i in range(idx):
+#     t1.append(t2[i])
+t1.extend(t2)
+t1.sort()
+print(t1)
+print(len(t1))
+for i in range(len(t1)-1):
+    if t3[j] == t1[i+1]:
+        continue
+    elif t1[i] == t1[i+1]:
+        t3.insert(j, t1[i])
+        j += 1
+t3.pop()
+string = ''
+for el in t3:
+    string += str(el)
+    string += ' '
+print(string)
+
+#--------------------------------------
+# HW 2
+В фермерском хозяйстве в Карелии выращивают чернику. Черника растет на круглой грядке, и кусты черники
+высажены по окружности грядки. Каждый куст черники имеет урожайность, которая соответствует количеству
+ягод на этом кусте.
+
+Урожайность черничных кустов представлена в виде списка arr, где arr[i] - это урожайность
+(количество ягод) i-го куста.
+
+В фермерском хозяйстве внедрена система автоматического сбора черники. Эта система состоит из
+управляющего модуля и нескольких собирающих модулей. Каждый собирающий модуль может собрать ягоды с
+одного куста и с двух соседних кустов. Собирающий модуль находится перед определенным кустом, и он может
+выбирать, с какого куста начать сбор ягод.
+
+Ваша задача - написать программу, которая определит максимальное число ягод, которое может собрать один
+собирающий модуль за один заход, находясь перед некоторым кустом грядки.
+
+Входные данные:
+На вход программе подается список arr, где arr[i] (1 ≤ arr[i] ≤ 1000) - урожайность i-го куста черники.
+Размер списка не превышает 1000 элементов.
+
+Выходные данные:
+Программа должна вывести одно целое число - максимальное количество ягод, которое может собрать
+собирающий модуль, находясь перед некоторым кустом грядки.
+
+Пример использования На входе:
+arr = [5, 8, 6, 4, 9, 2, 7, 3]
+
+На выходе:
+19
+"""
+
+arr = [5, 8, 6, 4, 9, 2, 7, 3]
+arr_count = list()
+for i in range(len(arr) - 1):
+    arr_count.append(arr[i - 1] + arr[i] + arr[i + 1])
+arr_count.append(arr[-2] + arr[-1] + arr[0])
+
+print(max(arr_count))
