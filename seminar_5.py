@@ -96,4 +96,28 @@ def func_2(data, new_str=""):
         return new_str
     return func_2(data[:-1], new_str + data[-1])
 print(func_2(data))
+
+# HW 1
+Напишите программу, которая на вход принимает
+два числа A и B, и возводит число А в целую степень B с
+помощью рекурсии.
+
+Пример:
+A = 3; B = 5 -> 243
 """
+# Решение с помощью цикла
+# def f_1(a, b):
+#     res = 1
+#     for _ in range(b):
+#         res *= a
+#     return res
+
+# Решение с помошью рекурсии
+def f_2(a, b, res=1):
+    if b == 0:
+        return res
+    return f_2(a, b-1, res * a)
+
+a = 3
+b = 5
+print(f_2(a, b))
