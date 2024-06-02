@@ -133,7 +133,7 @@ print(result)
 выведена только один раз (перестановка чисел новую пару не дает).
 Ввод:     Вывод:
 300       220 284
-"""
+
 # Решение в группе
 def get_sum(n):
     my_sum = 1
@@ -172,3 +172,26 @@ for i in range(220, k + 1):
     # Условие j <= k для того, чтобы не противоречить условиям задачи
     if sum_of_divisors(j) == i and i != j and i < j and j <= k:
         print(f"{i} {j}")
+
+#--------------------------------------
+# Дополнительное задание №1
+values = [True, False, True, None, True]
+
+result = []
+for v in values:
+    if v is True:
+        result.append('yes')
+    else:
+        if v is False:
+            result.append('no')
+        else:
+            result.append('unknown')
+print(result)
+
+Перепишите приведенный код на lc (list comprehension)
+
+values = [True, False, True, None, True]
+print(["yes" if v is True else "no" if v is False else "unknown" for v in values])
+
+
+"""
