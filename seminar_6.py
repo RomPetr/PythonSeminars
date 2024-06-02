@@ -1,3 +1,4 @@
+from functools import reduce
 """
 Задача №39. Решение в группах
 Даны два массива чисел. Требуется вывести те элементы первого массива (в том порядке, в каком они идут в первом
@@ -67,7 +68,7 @@ for item in temp_dict.keys():
     if temp_dict[item] >= 2:
         count_pairs += 1
 print(count_pairs)
-"""
+
 # Решение в группе
 nums = [1, 2, 3, 2, 3, 3, 3, 3]
 my_set = set(nums)
@@ -77,3 +78,46 @@ for item in my_set:
 print(sum(res))
 # List comprehension (Лист компрехэншен)
 print(sum([nums.count(item) // 2 for item in set(nums)]))
+"""
+
+# Вставка про MAP, FILTER, REDUCE
+# map
+# Возьмем список. Умножим элементы на 2 и вычтем 10
+def process_number(num):
+    squared = num ** 2
+    subtracted = squared - 10
+    return subtracted
+
+numbers = [1, 2, 3, 4, 5]
+new_numbers = list(map(process_number, numbers))
+
+print(new_numbers)
+#--------------------------------------
+
+# filter
+# Возьмем из списка элементы больше 5
+def greater_than_five(num):
+    return num > 5
+
+numbers = [2, 7, 1, 8, 4, 5]
+result = list(filter(greater_than_five, numbers))
+
+print(*result)
+#--------------------------------------
+
+# reduce
+# Сложем все элементы списка. Умножем все элементы списка
+def add(x, y):
+    return x + y
+
+def multiply(x, y):
+    return x * y
+
+numbers = [1, 2, 3, 4, 5]
+result = reduce(add, numbers, 0)
+print(result)
+# 15
+
+result = reduce(multiply, numbers, 1)
+print(result)
+#--------------------------------------
