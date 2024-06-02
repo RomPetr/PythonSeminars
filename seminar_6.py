@@ -134,7 +134,7 @@ print(result)
 Ввод:     Вывод:
 300       220 284
 """
-
+# Решение в группе
 def get_sum(n):
     my_sum = 1
     for el in range(2, n // 2 + 1):
@@ -153,3 +153,22 @@ def get_friendlies(k):
     return lst
 
 print(get_friendlies(10000))
+
+# Решение Азера
+def sum_of_divisors(n):
+    divisors_sum = 1
+    for i in range(2, n // 2 + 1): # Если число больше половины, то оно по дефолту не делитель
+        if n % i == 0:
+            divisors_sum += 1
+    return divisors_sum
+
+k = 10000
+
+# Начинаем с 220, т.к. минимальная пара дружественных чисел начинается с 220
+for i in range(220, k + 1):
+    j = sum_of_divisors(i)
+    # Условие i != j для того, чтобы исключить равные между собой значения
+    # Условие i < j для того, чтобы исключить одинаковые пары
+    # Условие j <= k для того, чтобы не противоречить условиям задачи
+    if sum_of_divisors(j) == i and i != j and i < j and j <= k:
+        print(f"{i} {j}")
