@@ -308,3 +308,14 @@ n = 4
 8
 11
 """
+a1 = 2
+d = 3
+n = 4
+i = 0
+#print(a1 + (n-1) * d + 1)
+for el in range(a1, a1 + (n+1) * d + 1, d):
+    i += 1
+    if i > n:
+        break
+    else:
+        print(el)
