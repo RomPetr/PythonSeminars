@@ -1,5 +1,43 @@
-# HW 1
 """
+Задача №47. Решение в группах
+У вас есть код, который вы не можете менять (так часто бывает, когда код в глубине
+программы используется множество раз и вы не хотите ничего сломать):
+transformation = <???>
+values = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29] # или любой другой список
+transormed_values = list(map(transformation, values))
+Единственный способ вашего взаимодействия с этим кодом - посредством задания
+функции transformation.
+Однако вы поняли, что для вашей текущей задачи вам не нужно никак преобразовывать
+список значений, а нужно получить его как есть.
+Напишите такое лямбда-выражение transformation, чтобы transformed_values получился
+копией values.
+
+Пример:
+
+Ввод:
+values = [1, 23, 42, ‘asdfg’]
+transformed_values = list(map(trasformation, values))
+if values == transformed_values:
+print(‘ok’)
+else:
+print(‘fail’)
+
+Вывод:
+ok
+"""
+
+# Решение:
+transformation = lambda x: x
+values = [1, 23, 42, "asdfg"]
+transformed_values = list(map(transformation, values))
+if values == transformed_values:
+    print("ok")
+else:
+    print('fail')
+
+#--------------------------------------
+"""
+# HW 1
 Напишите функцию print_operation_table(operation, num_rows, num_columns), которая принимает в качестве
 аргумента функцию, вычисляющую элемент по номеру строки и столбца. По умолчанию номер столбца и строки = 9.
 
@@ -27,8 +65,7 @@ print_operation_table(lambda x, y: x * y, 3, 3)
 2 4 6
 3 6 9
 
-"""
-
+# Решение:
 def print_operation_table(operation, num_rows=9, num_columns=9):
     if num_rows < 2:
         print("ОШИБКА! Размерности таблицы должны быть больше 2!")
@@ -43,3 +80,4 @@ def print_operation_table(operation, num_rows=9, num_columns=9):
 
 # Пример использования:
 print_operation_table(lambda x, y: x * y, 3, 3)
+"""
