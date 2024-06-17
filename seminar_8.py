@@ -73,9 +73,12 @@ def standart_write(file_name, res):
         f_w.writeheader()
         f_w.writerows(res)
 
+def copy_data(src_file, dest_file):
+    data = read_file(src_file)
+    standart_write(dest_file, data)
 
 file_name = 'phone.csv'
-
+copy_file_name = 'phone2.csv'
 
 def main():
     while True:
@@ -96,6 +99,12 @@ def main():
                 print("Файл отсутствует, пожалуйста, создайте файл")
                 continue
             remove_row(file_name)
+        elif command == 'c':
+            if not exists(file_name):
+                print("Файл отсутствует, пожалуйста, создайте файл")
+                continue
+            copy_data(file_name, copy_file_name)
+            print(f"Данные скопированы в файл {copy_file_name}")
 
 
 main()
