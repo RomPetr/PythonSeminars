@@ -73,12 +73,16 @@ def standart_write(file_name, res):
         f_w.writeheader()
         f_w.writerows(res)
 
+
+# Добавлена функция копирования всех данных в другой файл
 def copy_data(src_file, dest_file):
     data = read_file(src_file)
     standart_write(dest_file, data)
 
+
 file_name = 'phone.csv'
 copy_file_name = 'phone2.csv'
+
 
 def main():
     while True:
@@ -99,10 +103,12 @@ def main():
                 print("Файл отсутствует, пожалуйста, создайте файл")
                 continue
             remove_row(file_name)
-        elif command == 'c':
+        elif command == 'c':  # добавлена команда 'копировать'
             if not exists(file_name):
                 print("Файл отсутствует, пожалуйста, создайте файл")
                 continue
+            if not exists(copy_file_name): # если отсутствует файл получатель - создать его
+                create_file(copy_file_name)
             copy_data(file_name, copy_file_name)
             print(f"Данные скопированы в файл {copy_file_name}")
 
