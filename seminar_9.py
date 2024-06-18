@@ -49,7 +49,17 @@ print(data[(data['housing_median_age'] < 20) & (data['median_house_value'] > 700
 print(data['median_house_value'].max(), data['median_house_value'].min())
 
 # 2. Показать максимальное median_house_value, где median_income = 3.1250
-print(data[data['median_income'] == 3.1250]['median_house_value'].max())"""
+print(data[data['median_income'] == 3.1250]['median_house_value'].max())
 
 # 3. Узнать какая максимальная population в зоне минимального значения median_house_value
 print(data[data['median_house_value'] == data['median_house_value'].min()]['population'].max())
+"""
+
+# HW 1
+"""
+Дан файл california_housing_train.csv. Определить среднюю стоимость дома , где количество людей от 0 до 500 
+(population) и сохранить ее в переменную avg. Используйте модуль pandas.
+
+"""
+avg = data[data['population'] <= 500]['median_house_value'].mean()
+print(avg)
