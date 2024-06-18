@@ -15,7 +15,7 @@ print(data.describe())
 """
 
 """
-Следующая задача
+Следующая задача №2
 1. Проверить есть ли в файле пустые значения
 2. Показать median_house_value где median_income < 2
 3. Показать данные в первых 2 столбцах
@@ -35,4 +35,21 @@ print(data[['longitude', 'latitude']]) # заранее знаем столбц�
 print(data.iloc[:, :2]) # не знаем столбцы 
 
 # 4. Выбрать данные где housing_median_age < 20 и median_house_value > 70000
-print(data[(data['housing_median_age'] < 20) & (data['median_house_value'] > 70000)])"""
+print(data[(data['housing_median_age'] < 20) & (data['median_house_value'] > 70000)])
+"""
+
+"""
+Следующая задача №3
+1. Определить какое максимальное и минимальное значение median_house_value
+2. Показать максимальное median_house_value, где median_income = 3.1250
+3. Узнать какая максимальная population в зоне минимального значения median_house_value
+
+
+# 1. Определить какое максимальное и минимальное значение median_house_value
+print(data['median_house_value'].max(), data['median_house_value'].min())
+
+# 2. Показать максимальное median_house_value, где median_income = 3.1250
+print(data[data['median_income'] == 3.1250]['median_house_value'].max())"""
+
+# 3. Узнать какая максимальная population в зоне минимального значения median_house_value
+print(data[data['median_house_value'] == data['median_house_value'].min()]['population'].max())
