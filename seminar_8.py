@@ -21,7 +21,7 @@ def get_info():
     flag = False
     while not flag:
         try:
-            first_name = input('Имя: ')
+            first_name = input('Введите Имя: ')
             if len(first_name) < 2:
                 raise NameError('Слишком короткое имя')
             second_name = input('Введите фамилию: ')
@@ -75,9 +75,18 @@ def standart_write(file_name, res):
 
 
 # Добавлена функция копирования всех данных в другой файл
-def copy_data(src_file, dest_file):
+def copy_data(src_file, dest_file, row_num=None):
     data = read_file(src_file)
-    standart_write(dest_file, data)
+    if row_num is not None:
+        if row_num < 1 or row_num > len(data):
+            print('Введен неверный номер строки')
+            return
+        data = [data[row_num - 1]]
+    if not exists(dest_file):
+        create_file(dest_file)
+    dest_data = read_file(dest_file)
+    dest_data.extend(data)
+    standart_write(dest_file, dest_data)
 
 
 file_name = 'phone.csv'
@@ -97,20 +106,24 @@ def main():
             if not exists(file_name):
                 print("Файл отсутствует, пожалуйста, создайте файл")
                 continue
-            print(*read_file(file_name))
+            for i, ent in enumerate(read_file(file_name), 1):
+                print(f"{i}: {ent}")
         elif command == 'd':
             if not exists(file_name):
                 print("Файл отсутствует, пожалуйста, создайте файл")
                 continue
             remove_row(file_name)
-        elif command == 'c':  # добавлена команда 'копировать'
+        elif command == 'c':
             if not exists(file_name):
                 print("Файл отсутствует, пожалуйста, создайте файл")
                 continue
-            if not exists(copy_file_name): # если отсутствует файл получатель - создать его
-                create_file(copy_file_name)
-            copy_data(file_name, copy_file_name)
-            print(f"Данные скопированы в файл {copy_file_name}")
+            row_num = input('Введите номер строки для копирования (оставьте пустым для копирования всех строк): ')
+            row_num = int(row_num) if row_num.isdigit() else None
+            copy_data(file_name, copy_file_name, row_num)
+            if row_num is None:
+                print(f"Все данные скопированы в файл {copy_file_name}")
+            else:
+                print(f"Строка {row_num} скопирована в файл {copy_file_name}")
 
 
 main()
