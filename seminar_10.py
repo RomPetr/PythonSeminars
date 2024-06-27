@@ -144,7 +144,7 @@ penguins.to_csv('penguins.csv', index=False)
 
 Изобразить гистограмму по flipper_length_mm
 с оттенком height_group. Сделать анализ
-"""
+
 
 from seaborn import histplot
 from pandas import read_csv
@@ -154,3 +154,50 @@ penguins = read_csv('penguins.csv')
 
 histplot(penguins, x='flipper_length_mm', hue='height_group')
 show()
+"""
+
+"""
+HW 1
+В ячейке ниже представлен код генерирующий DataFrame, которая состоит всего из 1 столбца. 
+Ваша задача перевести его в one hot вид. Сможете ли вы это сделать без get_dummies?
+
+import random
+lst = ['robot'] * 10
+lst += ['human'] * 10
+random.shuffle(lst)
+data = pd.DataFrame({'whoAmI':lst})
+data.head()
+
+
+"""
+
+import pandas as pd
+import random
+
+# Генерация исходного DataFrame
+lst = ['robot'] * 10
+lst += ['human'] * 10
+random.shuffle(lst)
+data = pd.DataFrame({'whoAmI': lst})
+
+# Вывод исходного DataFrame
+print("Original DataFrame:")
+print(data.head())
+
+# Получение уникальных значений из столбца 'whoAmI'
+unique_values = data['whoAmI'].unique()
+
+# Создание DataFrame для one-hot кодирования
+one_hot_df = pd.DataFrame()
+
+"""
+# Заполнение one-hot DataFrame
+for value in unique_values:
+    one_hot_df[value] = (data['whoAmI'] == value).astype(int)
+
+# Вывод one-hot DataFrame
+print("\nOne-hot DataFrame:")
+print(one_hot_df.head())
+"""
+# Для кодировки категориальных данных можно использовать метод pandas get_dummies
+# print(pd.get_dummies(data['Type 1']))
