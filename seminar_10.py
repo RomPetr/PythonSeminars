@@ -171,33 +171,36 @@ data.head()
 
 """
 
-import pandas as pd
+# import pandas as pd
+from pandas import DataFrame, unique
 import random
 
 # Генерация исходного DataFrame
-lst = ['robot'] * 10
-lst += ['human'] * 10
-random.shuffle(lst)
-data = pd.DataFrame({'whoAmI': lst})
+lst = ['robot'] * 10 # заполняем список элементами в кол-ве 10 шт
+lst += ['human'] * 10 # добавляем в список еще 10 элементов
+''' проверка заполнености списка '''
+# print(lst)
+random.shuffle(lst) # перемешиваем элементы списока на месте в случайном порядке
+# print(lst)
+data = DataFrame({'whoAmI': lst})
 
 # Вывод исходного DataFrame
-print("Original DataFrame:")
-print(data.head())
+print("Initial DataFrame:")
+print(data.head(len(lst)))
 
 # Получение уникальных значений из столбца 'whoAmI'
 unique_values = data['whoAmI'].unique()
+print("\nUnique values:")
+print(f"{unique_values}\n")
 
-# Создание DataFrame для one-hot кодирования
-one_hot_df = pd.DataFrame()
+# Создаем DataFrame для one-hot кодирования
+one_hot_df = DataFrame()
 
-"""
-# Заполнение one-hot DataFrame
+# Заполняем one-hot DataFrame
 for value in unique_values:
     one_hot_df[value] = (data['whoAmI'] == value).astype(int)
+    print(one_hot_df[value])
 
 # Вывод one-hot DataFrame
 print("\nOne-hot DataFrame:")
-print(one_hot_df.head())
-"""
-# Для кодировки категориальных данных можно использовать метод pandas get_dummies
-# print(pd.get_dummies(data['Type 1']))
+print(one_hot_df.head(20))
