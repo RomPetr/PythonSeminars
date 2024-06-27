@@ -12,7 +12,7 @@ data = read_csv("california_housing_test.csv")
 # 2. Визуализировать longitude по отношения к median_house_value, используя линейный график
 # 3. Представить гистограмму по housing_median_age
 # 4. Изобразить гистограмму по median_house_value с оттенком housing_median_age
-
+#--------------------------------------
 
 #1. Изобразите отношение households к population с помощью точечного графика
 
@@ -60,7 +60,7 @@ fourth()
 Чтобы подключить датасет с пингвинами, воспользуйтесь данным скриптом:
 penguins = sns.load_dataset("penguins")
 pe
-
+#--------------------------------------
 
 from seaborn import load_dataset, scatterplot, PairGrid, heatmap
 from matplotlib.pyplot import show
@@ -129,3 +129,11 @@ low - маленький(до 35)
 
 """
 
+from pandas import read_csv
+
+penguins = read_csv('penguins.csv')
+
+penguins.loc[penguins['bill_length_mm'] < 35, 'height_group'] = 'low'
+penguins.loc[(penguins['bill_length_mm'] > 35 & penguins['bill_length_mm'] < 42), 'height_group'] = 'middle'
+penguins.loc[penguins['bill_length_mm'] > 34, 'height_group'] = 'high'
+penguins.to_csv('penguins.csv', index=False)
